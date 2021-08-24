@@ -13,11 +13,17 @@ struct BUILDING {
 	int h;  
 };
 
+struct cmp {
+	bool operator()(BUILDING a, BUILDING b) {
+		return (a.h < b.h);
+	}
+};
+
 int n;
 BUILDING arr[100005];
 map<int,int> x_idx;
 vector<int> x_coord;
-priority_queue<BUILDING, > pq;
+priority_queue<BUILDING, vector<BUILDING>, cmp> pq;
 
 bool compare(BUILDING a, BUILDING b)
 {
@@ -52,15 +58,29 @@ int main()
 	int next_height;
 	//cnt = the number of unique x coordinates
 	for(int i = 0; i < cnt; i++) {
-		while((j < n) && x[arr[j].lx] <= i) {
+		while((j < n) && (x_idx[arr[j].lx] <= i)) {
 			pq.push(arr[j]);		
 			j++;
 		}		
 
+		next_height = 0;
 		while(!pq.empty()) {
-			if(
+			if(pq.top().rx > x_coord[i]) {
+				next_height = pq.top().h;		
+				break;
+			}	
+
+			pq.pop();
 		}	
+
+		if(cur_height != next_height) {
+			cur_height = next_height;
+
+			printf("%d %d ", x_coord[i], cur_height);
+		}
 	}	
+
+	printf("\n");
 
 	return 0;
 }
