@@ -9,14 +9,14 @@
 using namespace std;
 
 typedef struct __BONGURI {
-	int l, r;
+	long long int l, r;
 }BONGURI;
 
 int N;
 stack<BONGURI> st;
 vector<BONGURI> arr;
-int input_seq[1000005][2];
-int ans1, ans2;
+long long int input_seq[1000005][2];
+long long int ans1, ans2;
 
 bool is_inside(BONGURI b1, BONGURI b2)
 {
@@ -34,50 +34,34 @@ int main()
 {
 	cin >> N;
 
-	int flag = 0;
-	int bong1, bong2;
 	for(int i = 0; i < N; i++) {
 		cin >> input_seq[i][0] >> input_seq[i][1];
 	}
 
-	int idx1 = (N - 1);
-	int idx2 = 0;
+	int idx;
+	idx = 0;
 	if(input_seq[0][1] > 0) {
-		idx1 = N - 1;
-		idx2 = 0;
-		while(input_seq[idx1][1] > 0) {
-			idx1--;	
+		idx = N - 1;
+		while(input_seq[idx][1] > 0) {
+			idx--;	
 		}
-
-		while(input_seq[idx2][1] > 0) {
-			idx2++;
-		}
-
-		BONGURI input_init;
-		input_init.l = min(input_seq[idx1][0], input_seq[idx2][0]);
-		input_init.r = max(input_seq[idx1][0], input_seq[idx2][0]);
-
-		arr.push_back(input_init);
 	}
 
-	for(int i = idx2; i <= idx1; i++) {
-		if((flag == 0) && (input_seq[i][1] > 0)) {
+	int flag = 0;
+	long long int bong1, bong2;
+	for(long long int i = idx; i <= (idx + N); i++) {
+		long long int index = (i % N);
+		if((flag == 0) && (input_seq[index][1] > 0)) {
 			flag = 1;
-			bong1 = input_seq[i][0];
+			bong1 = input_seq[index][0];
 		}
-		else if((flag == 1) && (input_seq[i][1] < 0)) {
+		else if((flag == 1) && (input_seq[index][1] < 0)) {
 			flag = 0;
-			bong2 = input_seq[i][0];
+			bong2 = input_seq[index][0];
 
 			BONGURI input;
-			if(bong1 < bong2) {
-				input.l = bong1;
-				input.r = bong2;	
-			}
-			else {
-				input.l = bong2;
-				input.r = bong1;
-			}
+			input.l = min(bong1, bong2);
+			input.r = max(bong1, bong2);
 
 			arr.push_back(input);
 		}
@@ -86,27 +70,33 @@ int main()
 	sort(arr.begin(), arr.end(), compare);
 
 	ans1 = 0;
-	ans2 = 0;
+	ans2 = 1;
 
-	st.push(arr[0]);
-	for(vector<BONGURI>::iterator it = arr.begin() + 1; it != arr.end(); it++) {
-		if(!is_inside(st.top(), *it)) ans2++;
-		
-		while(!is_inside(st.top(), *it)) { 
-			st.pop();
-
-			if(st.empty()) {
-				ans1++;
-				break;
-			}
+	for(vector<BONGURI>::iterator it = arr.begin(); it != arr.end(); it++) {
+		if(st.empty()) {
+			st.push(*it);
+			ans1++;
 		}
-		st.push(*it);
+		else if(!is_inside(st.top(), *it)) {
+			ans2++;
+		
+			while(!is_inside(st.top(), *it)) { 
+				st.pop();
+
+				if(st.empty()) {
+					ans1++;
+					break;
+				}
+			}
+			st.push(*it);
+		}
+		else if(is_inside(st.top(), *it)) {
+			st.push(*it);
+		}
 	}
 
-	ans1++;
-	ans2++;
 
-	printf("%d %d\n", ans1, ans2);
+	printf("%lld %lld\n", ans1, ans2);
 
 	return 0;
 }
