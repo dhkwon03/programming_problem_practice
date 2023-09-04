@@ -1,0 +1,135 @@
+### dots ###
+idx : 0 -- (100000, 100000) IsTarget? : 0
+idx : 1 -- (100000, 200000) IsTarget? : 0
+idx : 2 -- (130000, 200000) IsTarget? : 1
+idx : 3 -- (200000, 200000) IsTarget? : 0
+idx : 4 -- (200000, 290000) IsTarget? : 1
+idx : 5 -- (200000, 300000) IsTarget? : 1
+idx : 6 -- (280000, 300000) IsTarget? : 1
+idx : 7 -- (300000, 300000) IsTarget? : 1
+idx : 8 -- (300000, 200000) IsTarget? : 0
+idx : 9 -- (340000, 200000) IsTarget? : 1
+idx : 10 -- (400000, 200000) IsTarget? : 1
+idx : 11 -- (400000, 130000) IsTarget? : 1
+idx : 12 -- (400000, 100000) IsTarget? : 1
+idx : 13 -- (300000, 100000) IsTarget? : 1
+idx : 14 -- (200000, 100000) IsTarget? : 1
+------
+### cur conv (dots idx = 1)###
+100000 200000 / dist : 100000
+100000 100000 / dist : 0
+
+total_conv_dist : 100000.0
+--------
+### cur conv (dots idx = 2)###
+130000 200000 / dist : 104403
+100000 100000 / dist : 0
+
+total_conv_dist : 104403.1
+--------
+### cur conv (dots idx = 3)###
+200000 200000 / dist : 141421
+100000 100000 / dist : 0
+
+total_conv_dist : 141421.4
+--------
+### cur conv (dots idx = 4)###
+200000 290000 / dist : 90000
+200000 200000 / dist : 141421
+100000 100000 / dist : 0
+
+total_conv_dist : 231421.4
+--------
+### cur conv (dots idx = 5)###
+200000 300000 / dist : 100000
+200000 200000 / dist : 141421
+100000 100000 / dist : 0
+
+total_conv_dist : 241421.4
+--------
+### cur conv (dots idx = 6)###
+280000 300000 / dist : 128062
+200000 200000 / dist : 141421
+100000 100000 / dist : 0
+
+total_conv_dist : 269483.8
+--------
+### cur conv (dots idx = 7)###
+300000 300000 / dist : 282843
+100000 100000 / dist : 0
+
+total_conv_dist : 282842.7
+--------
+### cur conv (dots idx = 8)###
+300000 200000 / dist : 223607
+100000 100000 / dist : 0
+
+total_conv_dist : 223606.8
+--------
+### cur conv (dots idx = 9)###
+340000 200000 / dist : 260000
+100000 100000 / dist : 0
+
+total_conv_dist : 260000.0
+--------
+### cur conv (dots idx = 10)###
+400000 200000 / dist : 316228
+100000 100000 / dist : 0
+
+total_conv_dist : 316227.8
+--------
+### cur conv (dots idx = 11)###
+400000 130000 / dist : 301496
+100000 100000 / dist : 0
+
+total_conv_dist : 301496.3
+--------
+### cur conv (dots idx = 12)###
+400000 100000 / dist : 300000
+100000 100000 / dist : 0
+
+total_conv_dist : 300000.0
+--------
+### cur conv (dots idx = 13)###
+300000 100000 / dist : 200000
+100000 100000 / dist : 0
+
+total_conv_dist : 200000.0
+--------
+### cur conv (dots idx = 14)###
+200000 100000 / dist : 100000
+100000 100000 / dist : 0
+
+total_conv_dist : 100000.0
+--------
+### cur conv (dots idx = 15)###
+0 0 / dist : 141421
+100000 100000 / dist : 0
+
+total_conv_dist : 141421.4
+--------
+### cur conv (dots idx = 16)###
+0 0 / dist : 141421
+100000 100000 / dist : 0
+
+total_conv_dist : 141421.4
+--------
+### cur conv (dots idx = 17)###
+0 539173667 / dist : 5.39074e+08
+100000 100000 / dist : 0
+
+total_conv_dist : 539073676.3
+--------
+### cur conv (dots idx = 18)###
+589505312 2019846410 / dist : 2.10399e+09
+100000 100000 / dist : 0
+
+total_conv_dist : 2103990062.4
+--------
+### cur conv (dots idx = 19)###
+539831584 808464680 / dist : 9.7199e+08
+100000 100000 / dist : 0
+
+total_conv_dist : 971989526.0
+--------
+2607296.4
